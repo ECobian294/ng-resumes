@@ -1,1 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+.header-button {
+    @apply cursor-pointer text-gray-700 border border-green-700 rounded-md p-1 hover:bg-green-600 hover:text-lg
+}
+.dropDownElement {
+    @apply cursor-pointer block py-2 px-4 hover:bg-green-300 dark:hover:bg-green-600 dark:hover:text-white
+}
+.form-input-text{
+    @apply border rounded-lg p-1 bg-green-200 border-green-600 w-full
+}
+.form-label{
+    @apply text-green-700 text-lg
+}
+.accept-button{
+    @apply border rounded-lg p-1 bg-green-300 border-green-600 hover:bg-green-600 text-green-900 disabled:bg-gray-300 disabled:text-gray-500 disabled:border-gray-200
+}
+.cancel-button{
+    @apply border rounded-lg p-1 bg-red-300 border-red-600 hover:bg-red-600 text-red-800
+}
+.active{
+    @apply cursor-default text-gray-700 border border-green-700 rounded-md p-1 bg-green-600 text-xl hover:text-xl
+}
+@tailwind utilities;

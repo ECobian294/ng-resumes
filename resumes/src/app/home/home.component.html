@@ -1,0 +1,39 @@
+<div class="flex flex-col justify-center items-center  bg-green-100 p-2 h-full m-auto">
+    <h1 class="bold text-xl font-mono">Resumes web page</h1>
+    <p>Where you can create your custom resume!!</p>
+    <hr>
+    <div class="flex flex-col  border rounded-md border-green-500   bg-green-200 p-2 h-full w-1/2 m-auto mt-5">
+        <div class="flex flex-col justify-center items-start m-auto">
+            <h2 class="text-2xl m-2 bold">Tools</h2>
+            <p *ngIf="tools.length === 0">You have not tools yet. <a href="">Create tools</a></p>
+        </div>
+        <hr>
+        <div class="flex flex-col justify-center items-center" *ngIf="tools.length > 0">
+            <ul class="flex flex-row justify-items-stretch flex-wrap">
+                <li *ngFor="let tool of tools">
+                    <div class="flex flex-row border border-gray-500 bg-slate-200 rounded-md m-1.5 p-1 w-20 min-w-0 ">
+                        <a class="m-auto">{{tool.name}}</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="flex flex-col justify-center border rounded-md border-green-500 items-center  bg-green-200 p-2 h-full w-1/2 m-auto mt-5">
+        <h2>Projects</h2>
+        <p>You have not projects yet. <a href="">Create project</a></p>
+        <ul>
+            <li>
+                <a href="">Javascript</a>
+            </li>
+        </ul>
+    </div>
+    <div class="flex flex-col border rounded-md border-green-500 justify-center items-center  bg-green-200 p-2 h-full w-1/2 m-auto mt-5">
+        <h2>Resumes</h2>
+        <p>You have not resumes yet. <a href="">Create resume</a></p>
+        <ul>
+            <li>
+                <a href="">Javascript</a>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="flex flex-col justify-center items-center  bg-green-100 p-2 w-1/2 h-full m-auto">
+    <form (ngSubmit)="onSubmit(authForm)" #authForm="ngForm" class="flex-col w-72">
+        <div class="flex flex-col items-start">
+            <label 
+            for="email" 
+            class="form-label"
+            >Email:</label>
+            <input 
+            type="email" 
+            id="email" 
+            name="email"
+            ngModel
+            required 
+            class="form-input-text">
+        </div>
+        <div class="flex flex-col items-start">
+            <label 
+            for="password" 
+            class="form-label">Password:</label>
+            <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            ngModel
+            required
+            class="form-input-text">
+        </div>
+        <br>
+        <div class="flex flex-row justify-center items-center space-x-1">
+            <button type="submit" class="accept-button " [disabled]="!authForm.valid">{{formType}}</button>
+            <button type="button" class="cancel-button" *ngIf="!isLogin">Cancel</button>
+        </div>
+    </form>
+</div>

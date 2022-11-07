@@ -1,0 +1,36 @@
+<div class="flex bg-green-300 justify-between items-start p-2 pt-4">
+    <div class="flex">
+        <a class="text-3xl m-2 bold">{{pageTitle}}</a>
+        <ul class="flex justify-between space-x-2 mt-5 ml-5 items-start" *ngIf="isAuthenticated">
+            <li >
+                <a routerLinkActive="active" class="header-button" routerLink="/home">Home</a>
+            </li>
+            <li>
+                <a routerLinkActive="active" class="header-button" routerLink="/tools">Tools</a>
+            </li>
+            <li>
+                <a routerLinkActive="active" class="header-button" routerLink="/projects">Projects</a>
+            </li>
+        </ul>
+        <ul class="flex justify-between space-x-2 mt-5 ml-5 items-start" *ngIf="!isAuthenticated">
+            <li>
+                <a routerLinkActive="active" class="header-button" routerLink="/login">Login</a>
+            </li>
+            <li>
+                <a routerLinkActive="active" class="header-button" routerLink="/register">Register</a>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="isAuthenticated">
+        <button id="dropdownDefault" (click)="onDropdownProfile()" data-dropdown-toggle="dropdown" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button"> ></button>
+        <div id="dropdownProfile" class="hidden absolute right-0 z-10 w-44 bg-green-400 rounded divide-y divide-gray-100 shadow dark:bg-gray-700 overflow-hidden">
+            <ul class="py-1 text-sm text-gray-700 dark:text-gray-200">
+                <li><a class="dropDownElement">Account</a></li>
+                <li><a class="dropDownElement">Resumes</a></li>
+                <li><a class="dropDownElement">Configuration</a></li>
+                <hr>
+                <li><a class="dropDownElement" (click)="onLogout()">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

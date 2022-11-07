@@ -1,0 +1,57 @@
+<div class="flex flex-col justify-center items-center  bg-green-100 p-2 h-full m-auto">
+    <div class="flex flex-col justify-center items-start">
+        <h2 class="text-2xl m-2 bold">Tools</h2>
+        <p *ngIf="tools.length <= 0 && !isLoading">You have not tools yet. Please create tools</p>
+    </div>
+    <div class="flex flex-row justify-start items-start">
+        <button type="button" class="border border-gray-400 rounded-lg p-1 bg-white text-lg hover:bg-gray-100 mt-6 mr-6" (click)="changeCreateTool()" *ngIf="!createTool">Create Tool</button>
+        <form (ngSubmit)="onSubmit(toolform)" #toolform="ngForm" class="flex-row" *ngIf="createTool">
+            <div class="flex flex-col items-start">
+                <label 
+                for="name" 
+                class="form-label"
+                >Tool Name</label>
+                <input 
+                type="name" 
+                id="name" 
+                name="name"
+                ngModel
+                required 
+                class="form-input-text">
+            </div>
+            <div class="float-right mt-1">
+                <button type="submit" class="accept-button disabled:bg-gray-300 disabled:text-gray-500 disabled:border-gray-200" [disabled]="!toolform.valid">Save</button>
+                <button type="button" class="cancel-button mr-1" (click)="changeCreateTool()">Cancel</button>
+            </div>
+        </form>
+    </div>
+    <hr>
+    <div class="flex flex-col justify-center items-center">
+        <p *ngIf="isLoading">Loading...</p>
+        <ul class="flex flex-row justify-items-stretch flex-wrap" *ngIf="!isLoading">
+            <li *ngFor="let tool of tools; let i = index">
+                <div class="flex flex-col border border-gray-500 bg-slate-200 rounded-md m-1 p-1 w-44">
+                    <div class="flex flex-col" id="containet_{{tool.id}}">
+                        <a class="m-auto" id="toolDesc_{{tool.id}}">{{tool.name}}</a>
+                        <div class="hidden m-1 p-1" id="toolEditContainer_{{tool.id}}">
+                            <form [formGroup]="toolForms" id="form_{{tool.id}}"  *ngIf="editingTools">
+                            <input 
+                            class="w-full"
+                            type="text" 
+                            id="name_{{tool.id}}" 
+                            name="name" 
+                            formControlName="name">
+                        </form>
+                    </div>
+                    </div>
+                    <div class="flex flex-row m-auto">
+                        <button class="mr-1 p-1 border rounded-lg border-blue-600 bg-blue-400 hover:bg-blue-500 disabled:bg-gray-400" (click)="changeEdit(tool.id, tool.name)" id="edit_{{tool.id}}" [disabled]="editingTools">Edit</button>
+                        <button type="button" class="mr-1 p-1 border rounded-lg border-blue-600 bg-blue-400 hover:bg-blue-500 hidden" id="cancelEdit_{{tool.id}}" (click)="cancelEdit(tool.id)">Cancel</button>
+                        <button type="submit" class="accept-button hidden" (click)="saveEdit(tool.id, tool)" id="save_{{tool.id}}" [disabled]="!toolForms.valid">Save</button>
+                        <button type="button" class="cancel-button hidden" id="delete_{{tool.id}}" (click)="deleteTool(tool.id)">Delete</button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
